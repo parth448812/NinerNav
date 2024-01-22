@@ -1,0 +1,61 @@
+{% extends 'common.html' %}
+
+{% block head %}
+    <title>NinerNav | Signed-In Page</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container flex-grow-1">
+        <div class="row">
+            <div class="col-md-2 stats-menu">
+                <div class="btn-group-vertical">
+                    <!-- Change Difficulty Button -->
+                    <button type="button" class="btn btn-success mt-3 main-btn " id= "difficultyButton">Change Difficulty</button>
+                    <div id="difficultySubButtons" style="display: none;">
+                        <button type="button" class="btn btn-success sub-btn">Beginner</button>
+                        <button type="button" class="btn btn-success sub-btn">Medium</button>
+                        <button type="button" class="btn btn-success sub-btn">Expert</button>
+                    </div>
+    
+                    <!-- Change Game Mode Button -->
+                    <!-- <button type="button" class="btn btn-success mt-3 main-btn" id="gameButton">Change Game Mode</button>
+                    <div id="gameModeSubButtons"  style="display: none;">
+                        <button type="button" class="btn btn-success sub-btn">Regular</button>
+                        <button id ="counter" type="button" class="btn btn-success sub-btn">Timed</button>
+                        <button type="button" class="btn btn-success sub-btn">Sight Seeing</button>
+                    </div> -->
+    
+                    <!-- View Leaderboard Button -->
+                    <a href="/leaderboard">
+                        <button type="button" class="btn btn-success mt-3">View LeaderBoard</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 vid">
+                <div class="slider-style embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sbrYa4BXemA" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class = "stats-menu">
+                <h2 class="text-center mb-3">How to play</h2>
+                <p>
+                    The premise of NinerNav is quite simple:
+                    an image of a random spot from any of the 18 photographed locations
+                     shot with a 360 degree camera and adapted to appear in a virtual 3d space. 
+                     Players then have to guess their location on a map. 
+                     The closer the guess is to the actual location,
+                      the more points the player score
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer text-center">
+        <a href="/gamepage">
+            <button type="button" class="btn btn-success btn-lg mb-3" id="go"">Start</button>
+        </a>
+    </div>
+
+    <script src="static/components/game_menu.js"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+
+{% block head %}
+    <title>NinerNav | Result Page</title>
+{% endblock %}
+
+{% block body %}
+    <div id="result-container">
+        <div class="image-container">
+            <div class="title">Your Guess</div>
+            <iframe src="NinerNav/guess" width="100%" height="350px"></iframe>
+            <br><br>
+            <p class="result-text">{{ session["map_score"] }} points earned</p>
+        </div>
+
+        <div class="image-container">
+            <div class="title">Actual Location</div>
+            <iframe src="NinerNav/result" width="100%" height="350px"></iframe>
+            <br><br>
+        </div>
+
+        <div class="fun-facts">
+            <div class="title">Fun Fact</div>
+            <p>
+                
+                {{ session["map_desc"] }}
+            </p>
+        </div>
+    </div>
+
+    <div class="footer text-center action-buttons">
+        <a href="/gamepage">
+            <button type="button" class="btn btn-success btn-lg mb-3" id="go">Next Location</button>
+        </a>
+        <a href="/endgame">
+            <button type="button" class="btn btn-success btn-lg mb-3" id="go">End Game</button>
+        </a>
+    </div>
+{% endblock %}

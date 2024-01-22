@@ -1,0 +1,19 @@
+{% extends 'common.html' %}
+
+{% block head %}
+    <title>NinerNav | Leader Board</title>
+{% endblock %}
+
+{% block body %}
+    <div class="leaderboard-container">
+        <div class="leaderboard">
+            {% if scores|length %}
+            {% for score in scores %}
+            <div class="leaderboard-entry">{{loop.index}}. {{ score[0] }} ({{ score[1] }}) - Score: {{ score[2] }}</div>
+            {% endfor %}
+            {% else %}
+            <div class="leaderboard-entry">No games have been played yet.</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

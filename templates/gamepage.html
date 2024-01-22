@@ -1,0 +1,23 @@
+{% extends 'common.html' %}
+
+{% block head %}
+    <title>NinerNav | Game Page</title>
+{% endblock %}
+
+{% block body %}
+    <div id="game-container">
+        <div id="left-image-container">
+            <iframe id="left-image" src="NinerNav/game" name="Game" allowTransparency="true" scrolling="no" frameborder="0">
+            </iframe>
+        </div>
+        <div id="right-container">
+            <iframe id="left-image" src="NinerNav/map" name="Map" allowTransparency="true" scrolling="no" frameborder="0">
+            </iframe>
+        </div>
+
+        <!-- script that recieve the post message-->
+        <script src="/static/components/gamepage.js"></script>
+    </div>
+    <!-- Insert the CSRF token here, will be read by JavaScript -->
+    {{ form.csrf_token }}
+{% endblock %}

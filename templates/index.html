@@ -1,0 +1,80 @@
+{% extends 'common.html' %}
+
+{% block head %}
+    <title>NinerNav | Home Page</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container flex-grow-1">
+        <div class="row">
+            <div class="col-md-2 stats-menu">
+                <div class="btn-group-vertical">
+                    <!-- Change Difficulty Button -->
+                    <button type="button" class="btn btn-success mt-3 main-btn " id= "difficultyButton">Change Difficulty</button>
+                    <div id="difficultySubButtons" style="display: none;">
+                        <button type="button" class="btn btn-success sub-btn">Beginner</button>
+                        <button type="button" class="btn btn-success sub-btn">Medium</button>
+                        <button type="button" class="btn btn-success sub-btn">Expert</button>
+                    </div>
+
+                    <!-- View Leaderboard Button -->
+                    <a href="/leaderboard">
+                        <button type="button" class="btn btn-success mt-3">View LeaderBoard</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class = "slider-style" id="imageSlider">
+                    <img src="static/images/homepage_atkins.jpg" title="Atkins" height="250">
+                    <img src="static/images/homepage_bench.jpg" title="Bench" height="250">
+                    <img src="static/images/homepage_starquad.jpg" title="Star Quad" height="250">
+                    <img src="static/images/homepage_union.jpg" title="Student Union" height="250">
+                    <img src="static/images/homepage_woodward.jpg" title="Woodward" height="250">
+                </div>
+            </div>
+            <div class="col-md-2">
+            {% if is_authed %}
+                <div id="stats-container">
+                    <div class="stats-menu">
+                        <p class="stats-text hello"><b>Hello, {{ session['username'] }}!</b></p>
+                        {% if stats != None %}
+                        <p class="stats-text">Best Score: {{ stats[0] }}</p>
+                        <p class="stats-text">Average Score: {{ stats[1] }}</p>
+                        {% else %}
+                        <p class="">Play some games to see some stats here!</p>
+                        {% endif %}
+                        <form method="POST" action="/signout">
+                            {{ form.csrf_token }}
+                            <button class="btn btn-secondary mt-3" type="submit">Sign Out</button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class = "container stats-menu">
+                    <form action="/" method="POST">
+                        <h1 class="text-center signin"><b>Sign In</b></h1>
+                        {{ form.csrf_token }}
+                        <input type="text" class="form-control mt-3" placeholder="Username" id="usename" name="username" required>
+                        <input type="password" class="form-control mt-3" placeholder="Password" id="password" name="password" required>
+                        <button type="submit" class="btn btn-secondary mt-3" id="signInButton">Sign In</button>
+
+                        {% if error_occured %}
+                        <p class="small">{{ error }}</p>
+                        {% endif %}
+
+                        <a href="/signup">
+                            <button type="button" class="btn btn-secondary mt-3" id="signupButton">Sign Up</button>
+                        </a>
+                    </form>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+        <div class="footer text-center">
+            <a href="/gameprep">
+                <button type="button" class="btn btn-success btn-lg mb-3" id="go">Go</button>
+            </a>
+        </div>
+    </div>
+    <script src="static/components/game_menu.js"></script>
+{% endblock %}
